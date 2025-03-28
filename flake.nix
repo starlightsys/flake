@@ -19,11 +19,16 @@
       in
       {
         packages = {
+          beamdogClient = pkgs.callPackage ./overlays/beamdogClient { };
           cataclysm-dda = pkgs.callPackage ./overlays/cataclysm-dda { };
           fjordlauncher = pkgs.callPackage ./overlays/fjordlauncher { };
           wlx-overlay-s = pkgs.callPackage ./overlays/wlx-overlay-s { };
         };
         apps = rec {
+          beamdogClient = {
+            type = "app";
+            program = "${self.packages.${system}.beamdogClient}/bin/beamdogClient";
+          };
           cataclysm-dda = {
             type = "app";
             program = "${self.packages.${system}.cataclysm-dda}/bin/cataclysm-tiles";
