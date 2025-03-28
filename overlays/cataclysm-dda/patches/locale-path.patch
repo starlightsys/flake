@@ -1,0 +1,16 @@
+--- a/src/translations.cpp	2024-12-26 04:39:00.672971137 +0100
++++ b/src/translations.cpp	2024-12-26 04:40:15.814222839 +0100
+@@ -52,13 +52,11 @@
+ #define CATA_IS_ON_BSD
+ #endif
+ 
+-#if !defined(__ANDROID__) && ((defined(__linux__) || defined(CATA_IS_ON_BSD) || (defined(MACOSX) && !defined(TILES))))
+     if( !PATH_INFO::base_path().get_logical_root_path().empty() ) {
+         loc_dir = ( PATH_INFO::base_path() / "share" / "locale" ).generic_u8string();
+     } else {
+         loc_dir = PATH_INFO::langdir();
+     }
+-#endif
+ #endif // LOCALIZE
+     return loc_dir;
+ }

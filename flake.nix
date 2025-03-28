@@ -18,8 +18,15 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        packages.fjordlauncher = pkgs.callPackage ./overlays/fjordlauncher { };
+        packages = {
+          cataclysm-dda = pkgs.callPackage ./overlays/cataclysm-dda { };
+          fjordlauncher = pkgs.callPackage ./overlays/fjordlauncher { };
+        };
         apps = rec {
+          cataclysm-dda = {
+            type = "app";
+            program = "${self.packages.${system}.cataclysm-dda}/bin/cataclysm-tiles";
+          };
           fjordlauncher = {
             type = "app";
             program = "${self.packages.${system}.fjordlauncher}/bin/fjordlauncher";

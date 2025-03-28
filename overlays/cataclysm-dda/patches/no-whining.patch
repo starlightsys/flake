@@ -1,0 +1,32 @@
+diff -ruN a/src/debug_menu.cpp b/src/debug_menu.cpp
+--- a/src/debug_menu.cpp	2024-12-26 04:38:56.358833531 +0100
++++ b/src/debug_menu.cpp	2024-12-26 05:13:00.275390698 +0100
+@@ -1054,12 +1054,7 @@
+         menu.insert( menu.begin() + 1, debug_menu.begin(), debug_menu.end() );
+     }
+ 
+-    std::string msg;
+-    if( display_all_entries && !is_debug_character() ) {
+-        msg = _( "Debug Functions - Using these will cheat not only the game, but yourself.\nYou won't grow.  You won't improve.\nTaking this shortcut will gain you nothing.  Your victory will be hollow.\nNothing will be risked and nothing will be gained." );
+-    } else {
+-        msg = _( "Debug Functions" );
+-    }
++    std::string msg = _( "Debug Functions" );
+ 
+     while( true ) {
+         // TODO(db48x): go back to allowing a uilist to have both a
+diff -ruN a/src/player_difficulty.cpp b/src/player_difficulty.cpp
+--- a/src/player_difficulty.cpp	2024-12-26 05:07:52.262547920 +0100
++++ b/src/player_difficulty.cpp	2024-12-26 05:09:18.019802489 +0100
+@@ -349,10 +349,8 @@
+         output = string_format( "<color_%s>%s</color>", "yellow", _( "average" ) );
+     } else if( per < 2 * percent_band ) {
+         output = string_format( "<color_%s>%s</color>", "light_green", _( "strong" ) );
+-    } else if( per < 3 * percent_band ) {
+-        output = string_format( "<color_%s>%s</color>", "light_green", _( "powerful" ) );
+     } else {
+-        output = string_format( "<color_%s>%s</color>", "light_green", _( "overpowered" ) );
++        output = string_format( "<color_%s>%s</color>", "light_green", _( "powerful" ) );
+     }
+ 
+     if( get_option<bool>( "DEBUG_DIFFICULTIES" ) ) {
