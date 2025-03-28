@@ -21,6 +21,7 @@
         packages = {
           cataclysm-dda = pkgs.callPackage ./overlays/cataclysm-dda { };
           fjordlauncher = pkgs.callPackage ./overlays/fjordlauncher { };
+          wlx-overlay-s = pkgs.callPackage ./overlays/wlx-overlay-s { };
         };
         apps = rec {
           cataclysm-dda = {
@@ -30,6 +31,10 @@
           fjordlauncher = {
             type = "app";
             program = "${self.packages.${system}.fjordlauncher}/bin/fjordlauncher";
+          };
+          wlx-overlay-s = {
+            type = "app";
+            program = "${self.packages.${system}.wlx-overlay-s}/bin/wlx-overlay-s";
           };
         };
       }
