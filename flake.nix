@@ -1,5 +1,5 @@
 {
-  description = "runme application";
+  description = "App flake";
 
   inputs = {
     nixpkgs.url = "nixpkgs";
@@ -12,19 +12,17 @@
       nixpkgs,
       flake-utils,
     }:
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        packages.default = pkgs.writeShellScriptBin "runme" ''
-          echo "I am currently being run!"
-        '';
+        packages.fjordlauncher = pkgs.callPackage ./overlays/fjordlauncher { };
         apps = rec {
-          default = runme;
-          runme = {
+          fjordlauncher = {
             type = "app";
-            program = "${self.packages.${system}.default}/bin/runme";
+            program = "${self.packages.${system}.fjordlauncher}/bin/fjordlauncher";
           };
         };
       }
