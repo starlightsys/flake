@@ -23,6 +23,7 @@
           cataclysm-dda = pkgs.callPackage ./overlays/cataclysm-dda { };
           fjordlauncher = pkgs.callPackage ./overlays/fjordlauncher { };
           wlx-overlay-s = pkgs.callPackage ./overlays/wlx-overlay-s { };
+          OpenAudible = pkgs.callPackage ./overlays/OpenAudible { };
         };
         apps = rec {
           beamdogClient = {
@@ -36,6 +37,10 @@
           fjordlauncher = {
             type = "app";
             program = "${self.packages.${system}.fjordlauncher}/bin/fjordlauncher";
+          };
+          OpenAudible = {
+            type = "app";
+            program = "${self.packages.${system}.OpenAudible}/bin/OpenAudible";
           };
           wlx-overlay-s = {
             type = "app";
